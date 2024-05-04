@@ -179,21 +179,13 @@ document.getElementById('form').addEventListener('submit',  (e) => {
         throw new Error(`Error at sendData function:`, respose.statusText);
       }
       console.log(`Data processed successfully`);
+      alert("thanks for filling the form your successfully send , honor will contact you as soon as possible");
     } catch (error) {
       console.log(error);
+      alert("internal server error try after some time");
     }
   }
   
   sendData("https://portfoliyo-jyzi.onrender.com" , data)
 });
 
-
-//   try {
-//       const response = await axios.post('http://localhost:2000/api/data', data);
-//       console.log(response.data);
-//       alert("your message send successfuly");
-//   } catch (error) {
-//       console.error('Error submitting form:', error);
-//       alert("server error ");
-//   }
-// });

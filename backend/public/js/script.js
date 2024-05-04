@@ -167,7 +167,7 @@ document.getElementById('form').addEventListener('submit', async (e) => {
   };
 
   try {
-      const response = await axios.post('http://localhost:4000/api/data', data);
+      const response = await axios.post('http://localhost:2000/api/data', data);
       console.log(response.data);
       alert("your message send successfuly");
   } catch (error) {

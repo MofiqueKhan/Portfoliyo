@@ -180,11 +180,11 @@ document.getElementById('form').addEventListener('submit',  (e) => {
       }
       console.log(`Data processed successfully`);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   }
   
-  sendData("http://localhost:2000" , data)
+  sendData("https://portfoliyo-jyzi.onrender.com" , data)
 });
 
 

@@ -155,7 +155,7 @@ downloadBtn3.addEventListener("click", (e) => downloadResume(e));
 
 // submit form 
 
-document.getElementById('form').addEventListener('submit', async (e) => {
+document.getElementById('form').addEventListener('submit',  (e) => {
   e.preventDefault();
   
   const formData = new FormData(e.target);
@@ -165,13 +165,35 @@ document.getElementById('form').addEventListener('submit', async (e) => {
       email: formData.get('email'),
       userText: formData.get('userText')
   };
-
-  try {
-      const response = await axios.post('http://localhost:2000/api/data', data);
-      console.log(response.data);
-      alert("your message send successfuly");
-  } catch (error) {
-      console.error('Error submitting form:', error);
-      alert("server error ");
+  async function sendData(baseURL, data) {
+    try {
+      const requestHeader = {
+        method : 'POST',
+        body : JSON.stringify(data),
+        headers : {
+          'Content-Type' : 'application/json',
+        },
+      };
+      const respose = await fetch(`${baseURL}/api/data`, requestHeader);
+      if(!respose.ok){
+        throw new Error(`Error at sendData function:`, respose.statusText);
+      }
+      console.log(`Data processed successfully`);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
+  
+  sendData("http://localhost:2000" , data)
 });
+
+
+//   try {
+//       const response = await axios.post('http://localhost:2000/api/data', data);
+//       console.log(response.data);
+//       alert("your message send successfuly");
+//   } catch (error) {
+//       console.error('Error submitting form:', error);
+//       alert("server error ");
+//   }
+// });
